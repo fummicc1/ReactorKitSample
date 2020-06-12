@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import ReactorKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, StoryboardView {
+    var disposeBag: DisposeBag = .init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        reactor = AppReactor()
     }
 
-
+    func bind(reactor: AppReactor) {
+        
+    }
 }
 
