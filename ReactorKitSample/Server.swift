@@ -17,7 +17,7 @@ class Server {
 }
 
 extension Server: DAO {
-    func get() -> Observable<[[Model.Response]]> {
+    func get() -> Observable<[Model.Response]> {
         Single.create { [weak self] observer -> Disposable in
             guard let self = self else {
                 return Disposables.create()

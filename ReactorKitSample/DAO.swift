@@ -11,5 +11,5 @@ import RxSwift
 
 protocol DAO {
     func create(model: Model.Request) -> Observable<Void>
-    func get() -> Observable<[[Model.Response]]>
+    func get() -> Observable<[Model.Response]>
 }

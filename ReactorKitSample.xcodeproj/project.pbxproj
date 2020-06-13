@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D33B2B462494689F008963B3 /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B2B452494689F008963B3 /* AlertAction.swift */; };
+		D33B2B4824946A29008963B3 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B2B4724946A29008963B3 /* Router.swift */; };
 		D3F92A8F2493D61A00BCF073 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F92A8E2493D61A00BCF073 /* AppDelegate.swift */; };
 		D3F92A912493D61A00BCF073 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F92A902493D61A00BCF073 /* SceneDelegate.swift */; };
 		D3F92A932493D61A00BCF073 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F92A922493D61A00BCF073 /* ViewController.swift */; };
@@ -58,6 +60,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D33B2B452494689F008963B3 /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
+		D33B2B4724946A29008963B3 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D3F92A8B2493D61900BCF073 /* ReactorKitSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactorKitSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F92A8E2493D61A00BCF073 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3F92A902493D61A00BCF073 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,16 +137,18 @@
 			isa = PBXGroup;
 			children = (
 				D3F92A9C2493D61A00BCF073 /* Info.plist */,
+				D33B2B452494689F008963B3 /* AlertAction.swift */,
 				D3F92A8E2493D61A00BCF073 /* AppDelegate.swift */,
 				D3F92AC52493DA4600BCF073 /* AppReactor.swift */,
 				D3F92AC92493DBDF00BCF073 /* DAO.swift */,
 				D3F92AC72493DACF00BCF073 /* Model.swift */,
+				D33B2B4724946A29008963B3 /* Router.swift */,
 				D3F92A902493D61A00BCF073 /* SceneDelegate.swift */,
+				D3F92AD22493DCCC00BCF073 /* Server.swift */,
 				D3F92A922493D61A00BCF073 /* ViewController.swift */,
 				D3F92A972493D61A00BCF073 /* Assets.xcassets */,
 				D3F92A992493D61A00BCF073 /* LaunchScreen.storyboard */,
 				D3F92A942493D61A00BCF073 /* Main.storyboard */,
-				D3F92AD22493DCCC00BCF073 /* Server.swift */,
 			);
 			path = ReactorKitSample;
 			sourceTree = "<group>";
@@ -338,7 +344,9 @@
 			files = (
 				D3F92AD32493DCCC00BCF073 /* Server.swift in Sources */,
 				D3F92ACA2493DBDF00BCF073 /* DAO.swift in Sources */,
+				D33B2B462494689F008963B3 /* AlertAction.swift in Sources */,
 				D3F92AC82493DACF00BCF073 /* Model.swift in Sources */,
+				D33B2B4824946A29008963B3 /* Router.swift in Sources */,
 				D3F92AC62493DA4600BCF073 /* AppReactor.swift in Sources */,
 				D3F92A932493D61A00BCF073 /* ViewController.swift in Sources */,
 				D3F92A8F2493D61A00BCF073 /* AppDelegate.swift in Sources */,
