@@ -1,0 +1,47 @@
+{
+  "Mac" : [
+    {
+      "name" : "ReactorKit",
+      "hash" : "fe308ad38ddcbac62e696382bf40d57db33642e6175b6288c6caaa45ceed1447",
+      "swiftToolchainVersion" : "5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
+    },
+    {
+      "name" : "ReactorKitRuntime",
+      "hash" : "163d82e92ec119d07e911525309ff42cc2c7c80b53a01d57699342fed690d856"
+    }
+  ],
+  "watchOS" : [
+    {
+      "name" : "ReactorKit",
+      "hash" : "73ef7dca7ea2a9be90425d21a97a90914a88df88e6e4bcafccda49130c8405f2",
+      "swiftToolchainVersion" : "5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
+    },
+    {
+      "name" : "ReactorKitRuntime",
+      "hash" : "9d7bf9949b0fd95926ce9011dc8c9ed0948c6f01f3a3eb58b8dd7504a8081851"
+    }
+  ],
+  "tvOS" : [
+    {
+      "name" : "ReactorKitRuntime",
+      "hash" : "9099c8d3f1a245bdebbce8b3e716503f8c37c51935c2ecb0270f9e2a8f5c37e5"
+    },
+    {
+      "name" : "ReactorKit",
+      "hash" : "2c8cf7a767e68a2a7315cf8b2737308414b8d3fd96ee3034d4d668d6a16bafc5",
+      "swiftToolchainVersion" : "5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
+    }
+  ],
+  "commitish" : "2.1.0",
+  "iOS" : [
+    {
+      "name" : "ReactorKitRuntime",
+      "hash" : "e44a70136c9281163f0d8248be5b4caff0705bc2cd3f760b1de07c869871f8db"
+    },
+    {
+      "name" : "ReactorKit",
+      "hash" : "d7d1882b1dc7849b5f2782c03bde9c8ad403559d7b8d1f99f2ca138b6d5fbed9",
+      "swiftToolchainVersion" : "5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
+    }
+  ]
+}

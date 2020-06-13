@@ -15,6 +15,15 @@ enum LoadingState {
     case complete
     case fail(Error)
     case idel
+    
+    var isLoading: Bool {
+        switch self {
+        case .complete, .fail, .idel:
+            return false
+        case .progress:
+            return true
+        }
+    }
 }
 
 class AppReactor: Reactor {
@@ -36,8 +45,11 @@ class AppReactor: Reactor {
     
     struct State {
         var isLoading: Bool = false
+        var error: Error?
         var models: [Model.Response] = []
-        var isEmpty: Bool = false
+        var isEmpty: Bool {
+            models.isEmpty
+        }
     }
     
     // Action -> Mutation
@@ -60,12 +72,27 @@ class AppReactor: Reactor {
             ])
             
         case .pullToRefresh, .fetchLatestData:
-            return depedency.server.get().map { Mutation.setModels($0) }
+            return fetchModels()
         }
     }
     
     private func fetchModels() -> Observable<Mutation> {
         depedency.server.get().map { Mutation.setModels($0) }
+    }
+    
+    // Mutation -> State
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        state.error = nil
+        switch mutation {
+        case .addModelState(let loadingState):
+            state.isLoading = loadingState.isLoading
+            if case LoadingState.fail(let error) = loadingState {
+                state.error = error
+            }
+            
+        case .fetchModelsState(<#T##LoadingState#>)
+        }
     }
 }
 
