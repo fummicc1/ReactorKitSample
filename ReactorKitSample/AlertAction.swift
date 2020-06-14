@@ -22,21 +22,31 @@ extension AlertActionType {
 }
 
 protocol AlertType {
-    func show(title: String?, message: String?, style: UIAlertController.Style, actions: [AlertActionType]) -> Observable<AlertActionType>
+    func create(title: String?, message: String?, style: UIAlertController.Style, actions: [AlertActionType]) -> Observable<(alert: UIAlertController, tapAction: AlertActionType?)>
 }
 
 class Alert: AlertType {
-    func show(title: String?, message: String?, style: UIAlertController.Style, actions: [AlertActionType]) -> Observable<AlertActionType> {
-        Observable<AlertActionType>.create { observer -> Disposable in
+    func create(title: String?, message: String?, style: UIAlertController.Style, actions: [AlertActionType]) -> Observable<(alert: UIAlertController, tapAction: AlertActionType?)> {
+        Observable.create { observer -> Disposable in
             let alert = UIAlertController(title: title, message: message, preferredStyle: style)
             for action in actions {
                 let alertAction = UIAlertAction(title: action.title, style: action.style) { _ in
-                    observer.onNext(action)
+                    observer.onNext((alert, action))
                 }
                 alert.addAction(alertAction)
             }
-            
+            observer.onNext((alert, nil))
             return Disposables.create()
         }
+    }
+}
+
+class AlertAction: AlertActionType {
+    var title: String
+    var style: UIAlertAction.Style
+    
+    init(title: String, style: UIAlertAction.Style = .default) {
+        self.title = title
+        self.style = style
     }
 }

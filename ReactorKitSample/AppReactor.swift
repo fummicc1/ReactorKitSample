@@ -28,7 +28,7 @@ enum LoadingState {
 
 class AppReactor: Reactor {
     var initialState: State = .init()
-    var depedency: Dependency = .init()
+    var depedency: Dependency = .init(server: MockServer())
     
     enum Action {
         case didTapAddModelButton(title: String, content: String)
@@ -37,10 +37,8 @@ class AppReactor: Reactor {
     }
     
     enum Mutation {
-        case fetchModelsState(LoadingState)
-        case addModelState(LoadingState)
+        case loadingState(LoadingState)
         case setModels([Model.Response])
-        case setEmptyState(Bool)
     }
     
     struct State {
@@ -58,13 +56,13 @@ class AppReactor: Reactor {
         case .didTapAddModelButton(let title, let content):
             let model = Model.Request(title: title, content: content)
             return Observable.concat([
-                Observable.just(Mutation.addModelState(.progress)),
+                Observable.just(Mutation.loadingState(.progress)),
                 self.depedency.server.create(model: model).materialize()
                     .map ({ event in
                         if let error = event.error {
-                            return Mutation.addModelState(.fail(error))
+                            return Mutation.loadingState(.fail(error))
                         }
-                        return Mutation.addModelState(.complete)
+                        return Mutation.loadingState(.complete)
                     })
                     .do(onNext: { mutation in
                         self.action.onNext(.fetchLatestData)
@@ -77,7 +75,18 @@ class AppReactor: Reactor {
     }
     
     private func fetchModels() -> Observable<Mutation> {
-        depedency.server.get().map { Mutation.setModels($0) }
+        Observable.concat([
+            Observable.just(Mutation.loadingState(.progress)),
+            depedency.server.get().materialize().map ({ event in
+                if let error = event.error {
+                    return Mutation.loadingState(.fail(error))
+                }
+                if let element = event.element {
+                    return Mutation.setModels(element)
+                }
+                return Mutation.loadingState(.complete)
+            }),
+        ])
     }
     
     // Mutation -> State
@@ -85,14 +94,16 @@ class AppReactor: Reactor {
         var state = state
         state.error = nil
         switch mutation {
-        case .addModelState(let loadingState):
+        case .loadingState(let loadingState):
             state.isLoading = loadingState.isLoading
             if case LoadingState.fail(let error) = loadingState {
                 state.error = error
             }
             
-        case .fetchModelsState(<#T##LoadingState#>)
+        case .setModels(let models):
+            state.models = models
         }
+        return state
     }
 }
 
